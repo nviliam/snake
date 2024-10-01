@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    overflow: hidden; 
+}
+
+#startScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.character {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.character img {
+    width: 100px; /* Válaszd ki a megfelelő méretet */
+    height: auto; /* Arányos méretezés */
+    margin-bottom: 10px;
+    border-radius: 10px; /* Lekerekített sarkok */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Árnyék */
+}
+
+.character button {
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    background-color: #ffffff;
+    border: 2px solid transparent; /* Alapértelmezett határ */
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.character:hover {
+    transform: scale(1.05); /* Méret növelése hoverre */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Árnyék hoverre */
+}
+
+.character button:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Hover háttér */
+    border-color: rgba(0, 0, 0, 0.3); /* Hover határ */
+}
+
+@media (max-width: 600px) {
+    .character img {
+        width: 80px; /* Mobil méret */
+    }
+
+    .character button {
+        font-size: 16px; /* Mobil gomb méret */
+    }
+}

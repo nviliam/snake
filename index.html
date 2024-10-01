@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="startScreen">
+        <h1>Choose a Snake!</h1>
+        <div class="character">
+            <img id="character1Image" src="picture/character1.png" alt="John">
+            <button id="character1">John</button>
+        </div>
+        <div class="character">
+            <img id="character2Image" src="picture/character2.png" alt="Rambo">
+            <button id="character2">Rambo</button>
+        </div>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="gameOverScreen" style="display: none;">
+        <h1>Game Over</h1>
+        <button id="restart">Play again</button>
+        <button id="mainMenu">Back to main menu</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
