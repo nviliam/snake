@@ -15,14 +15,14 @@ const resizeCanvas = () => {
     canvas.height = window.innerHeight;
 };
 
-// Hangfájlok tömbje
+
 const eatSounds = [
     'Sound/eat_sound1.mp3',
     'Sound/eat_sound2.mp3',
     'Sound/eat_sound3.mp3'
 ];
 
-// Véletlenszerű hang lejátszása
+
 const playRandomEatSound = () => {
     const randomIndex = Math.floor(Math.random() * eatSounds.length);
     const audio = new Audio(eatSounds[randomIndex]);
@@ -37,7 +37,7 @@ const resetGame = () => {
         x: Math.floor(Math.random() * (canvas.width / gridSize)),
         y: Math.floor(Math.random() * (canvas.height / gridSize))
     };
-    direction = { x: 1, y: 0 }; // Kígyó kezdetben jobbra mozog
+    direction = { x: 1, y: 0 };
     isGameOver = false;
     appleCount = 0;
     gameSpeed = 100;  
@@ -48,18 +48,15 @@ const drawGame = () => {
     if (isGameOver) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Alma kirajzolása
     ctx.fillStyle = 'red';
     ctx.fillRect(apple.x * gridSize, apple.y * gridSize, gridSize, gridSize);
 
-    // Kígyó kirajzolása
     ctx.fillStyle = characterColor;  
     snake.forEach(segment => ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize));
 
-    // Mozgás
+
     const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
 
-    // Kígyó növelése, ha megeszi az almát
     if (head.x === apple.x && head.y === apple.y) {
         apple = {
             x: Math.floor(Math.random() * (canvas.width / gridSize)),
@@ -67,7 +64,6 @@ const drawGame = () => {
         };
         appleCount++;
 
-        // Játsszunk le egy véletlenszerű hangot
         playRandomEatSound();
 
         if (appleCount % 5 === 0) gameSpeed = Math.max(50, gameSpeed - 10); 
@@ -77,7 +73,6 @@ const drawGame = () => {
 
     snake.unshift(head);
 
-    // Ütközés ellenőrzése
     if (
         head.x < 0 || head.x >= canvas.width / gridSize ||
         head.y < 0 || head.y >= canvas.height / gridSize ||

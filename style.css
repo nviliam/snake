@@ -24,11 +24,11 @@ body {
 }
 
 .character img {
-    width: 100px; /* Válaszd ki a megfelelő méretet */
-    height: auto; /* Arányos méretezés */
+    width: 100px; 
+    height: auto; 
     margin-bottom: 10px;
-    border-radius: 10px; /* Lekerekített sarkok */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Árnyék */
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .character button {
@@ -37,27 +37,27 @@ body {
     margin: 10px;
     cursor: pointer;
     background-color: #ffffff;
-    border: 2px solid transparent; /* Alapértelmezett határ */
+    border: 2px solid transparent; 
     border-radius: 5px;
     transition: background-color 0.3s, border-color 0.3s;
 }
 
 .character:hover {
-    transform: scale(1.05); /* Méret növelése hoverre */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Árnyék hoverre */
+    transform: scale(1.05); 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); 
 }
 
 .character button:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* Hover háttér */
-    border-color: rgba(0, 0, 0, 0.3); /* Hover határ */
+    background-color: rgba(0, 0, 0, 0.1); 
+    border-color: rgba(0, 0, 0, 0.3); 
 }
 
 @media (max-width: 600px) {
     .character img {
-        width: 80px; /* Mobil méret */
+        width: 80px; 
     }
 
     .character button {
-        font-size: 16px; /* Mobil gomb méret */
+        font-size: 16px;
     }
 }
