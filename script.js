@@ -45,6 +45,7 @@ const resetGame = () => {
 };
 
 const drawGame = () => {
+    if (isGameOver || isPaused) return;
     if (isGameOver) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -66,7 +67,7 @@ const drawGame = () => {
 
         playRandomEatSound();
 
-        if (appleCount % 5 === 0) gameSpeed = Math.max(50, gameSpeed - 10); 
+        if (appleCount % 3 === 0) gameSpeed = Math.max(50, gameSpeed - 15); 
     } else {
         snake.pop();
     }
@@ -89,6 +90,18 @@ const gameOver = () => {
     gameOverScreen.style.display = 'block';
     canvas.style.display = 'none';
 };
+
+const resetStartScreenStyles = () => {
+    startScreen.style.display = 'flex';
+    startScreen.style.flexDirection = 'column';
+    startScreen.style.justifyContent = 'center';
+    startScreen.style.alignItems = 'center';
+
+    document.querySelectorAll('.character').forEach(character => {
+        character.style.width = '';
+    });
+};
+
 
 document.addEventListener('keydown', (event) => {
     if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
@@ -117,6 +130,8 @@ mainMenuBtn.addEventListener('click', () => {
     gameOverScreen.style.display = 'none';
     startScreen.style.display = 'block';
     canvas.style.display = 'none';
+    resetStartScreenStyles();
+    isPaused = false;
 });
 
 character1Btn.addEventListener('click', () => {
@@ -131,4 +146,40 @@ character2Btn.addEventListener('click', () => {
     startScreen.style.display = 'none';
     canvas.style.display = 'block';
     resetGame();
+});
+
+
+const pauseScreen = document.getElementById('pauseScreen');
+const resumeBtn = document.getElementById('resume');
+const pauseMainMenuBtn = document.getElementById('pauseMainMenu');
+
+let isPaused = false;
+
+const togglePause = () => {
+    if (isPaused) {
+        isPaused = false;
+        pauseScreen.style.display = 'none';
+        drawGame();
+    } else {
+        isPaused = true;
+        pauseScreen.style.display = 'block';
+    }
+};
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        togglePause();
+    }
+});
+
+resumeBtn.addEventListener('click', () => {
+    togglePause();
+});
+
+pauseMainMenuBtn.addEventListener('click', () => {
+    pauseScreen.style.display = 'none';
+    startScreen.style.display = 'block';
+    canvas.style.display = 'none';
+    resetStartScreenStyles();
+    isPaused = false;
 });
